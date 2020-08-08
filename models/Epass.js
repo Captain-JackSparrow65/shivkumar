@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 
-const BookSchema = mongoose.Schema({
+const epassSchema = mongoose.Schema({
   fullname: {
     type: String,
     required: true,
@@ -14,12 +14,12 @@ const BookSchema = mongoose.Schema({
     type: String,
     required: true,
   },
+  phone: {
+    type: Number,
+  },
   caste: {
     type: String,
     required: true,
-  },
-  phone: {
-    type: Number,
   },
   permanentaddress: {
     type: String,
@@ -37,6 +37,9 @@ const BookSchema = mongoose.Schema({
     type: Number,
     required: true,
   },
+  // dateOfBirth: {
+  //   type: Date,
+  // },
   course: {
     type: String,
     required: true,
@@ -77,10 +80,6 @@ const BookSchema = mongoose.Schema({
     type: String,
     required: true,
   },
-  puc: {
-    type: String,
-    required: true,
-  },
   UG: {
     type: String,
     required: true,
@@ -111,4 +110,4 @@ const BookSchema = mongoose.Schema({
     default: Date.now,
   },
 });
-module.exports = Dhyanasagar = mongoose.model('dhyanasagar', BookSchema);
+module.exports = Epass = mongoose.model('Epass', epassSchema);

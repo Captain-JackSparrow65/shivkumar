@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 
-const BookSchema = mongoose.Schema({
+const faacfc = mongoose.Schema({
   fullname: {
     type: String,
     required: true,
@@ -14,12 +14,12 @@ const BookSchema = mongoose.Schema({
     type: String,
     required: true,
   },
+  phone: {
+    type: Number,
+  },
   caste: {
     type: String,
     required: true,
-  },
-  phone: {
-    type: Number,
   },
   permanentaddress: {
     type: String,
@@ -37,6 +37,9 @@ const BookSchema = mongoose.Schema({
     type: Number,
     required: true,
   },
+  // dateOfBirth: {
+  //   type: Date,
+  // },
   course: {
     type: String,
     required: true,
@@ -111,4 +114,4 @@ const BookSchema = mongoose.Schema({
     default: Date.now,
   },
 });
-module.exports = Dhyanasagar = mongoose.model('dhyanasagar', BookSchema);
+module.exports = FaaFc = mongoose.model('FaacFc', faacfc);

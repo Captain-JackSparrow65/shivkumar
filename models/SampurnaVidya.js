@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 
-const BookSchema = mongoose.Schema({
+const Sampurnavidya = mongoose.Schema({
   fullname: {
     type: String,
     required: true,
@@ -10,6 +10,7 @@ const BookSchema = mongoose.Schema({
     required: true,
     unique: true,
   },
+
   permanentaddress: {
     type: String,
     required: true,
@@ -26,6 +27,24 @@ const BookSchema = mongoose.Schema({
     type: Number,
     required: true,
   },
+  caste: {
+    type: String,
+    required: true,
+  },
+  gender: {
+    type: String,
+    required: true,
+  },
+  phone: {
+    type: Number,
+  },
+  course: {
+    type: String,
+    required: true,
+  },
+  branch: {
+    type: String,
+  },
   collegename: {
     type: String,
     required: true,
@@ -38,15 +57,48 @@ const BookSchema = mongoose.Schema({
     type: String,
     required: true,
   },
-  bookname: {
+  percentage: {
     type: String,
     required: true,
   },
-  bookauthor: {
+  collegeID: {
     type: String,
     required: true,
   },
-  bookedition: {
+  incomeCertificate: {
+    type: String,
+    required: true,
+  },
+  casteCertificate: {
+    type: String,
+    required: true,
+  },
+  adharCard: {
+    type: String,
+    required: true,
+  },
+  bankDetails: {
+    type: String,
+    required: true,
+  },
+
+  photo: {
+    type: String,
+    required: true,
+  },
+  sslc: {
+    type: String,
+    required: true,
+  },
+  puc: {
+    type: String,
+    required: true,
+  },
+  UG: {
+    type: String,
+    required: true,
+  },
+  PG: {
     type: String,
     required: true,
   },
@@ -55,15 +107,5 @@ const BookSchema = mongoose.Schema({
     type: Date,
     default: Date.now,
   },
-
-  collgeID: {
-    type: String,
-  },
-  adharcard: {
-    type: String,
-  },
-  marks: {
-    type: String,
-  },
 });
-module.exports = sampurnaVidya = mongoose.model('SampurnaVidya', BookSchema);
+module.exports = SampurnaVidya = mongoose.model('sampurnavidya', Sampurnavidya);

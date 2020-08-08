@@ -1,15 +1,14 @@
 const express = require('express');
 const connectDB = require('./config/db');
 const bodyParser = require('body-parser');
-
 const app = express();
 connectDB();
 
 //init middleware
-// app.use(express.json({ extended: true }));
+app.use(express.json({ extended: true }));
 app.use(express.static('uploads'));
-app.use(bodyParser.urlencoded({ extended: false }));
-app.use(bodyParser.json());
+// app.use(bodyParser.urlencoded({ extended: false }));
+// app.use(bodyParser.json());
 
 app.use((req, res, next) => {
   res.header('Access-Control-Allow-Origin', '*');
@@ -27,6 +26,7 @@ app.use((req, res, next) => {
 // define routes
 app.use('/api/books', require('./routes/api/books'));
 app.use('/api/hostel', require('./routes/api/Hostel'));
+app.use('/api/sampurna', require('./routes/api/Sampurna'));
 
 const PORT = process.env.PORT || 5000;
 

@@ -4,73 +4,80 @@ const mongoose = require('mongoose');
 const multer = require('multer');
 const path = require('path');
 const { check, validationResult } = require('express-validator/check');
-const Dhyanasagar = require('../../models/Dhyanasagar');
+const vidya = require('../../models/SampurnaVidya');
 
 //uploads path folders functions and configs
 const storage = multer.diskStorage({
   destination: function (req, file, cb) {
-    if (file.fieldname === 'adharCard') {
-      cb(null, './upload/FAACFC/adharCard/');
-    } else if (file.fieldname === 'photo') {
-      cb(null, './upload/FAACFC/userPhoto/');
-    } else if (file.fieldname === 'puc') {
-      cb(null, './upload/FAACFC/PUC/');
-    } else if (file.fieldname === 'UG') {
-      cb(null, './upload/FAACFC/lastSemUG/');
-    } else if (file.fieldname === 'PG') {
-      cb(null, './upload/FAACFC/lastSemPG/');
-    } else if (file.fieldname === 'collegeID') {
-      cb(null, './upload/FAACFC/collegeID/');
-    } else if (file.fieldname === 'bankDetails') {
-      cb(null, './upload/FAACFC/bankAC/');
-    } else if (file.fieldname === 'income') {
-      cb(null, './upload/FAACFC/incomeCertificate/');
-    } else if (file.fieldname === 'casteCertificate') {
-      cb(null, './upload/FAACFC/castCertificate/');
+    if (file.fieldname === 'avatar1') {
+      cb(null, './upload/SAMPURNAVIDYA/adharCard/');
+    } else if (file.fieldname === 'avatar2') {
+      cb(null, './upload/SAMPURNAVIDYA/bankAC/');
+    } else if (file.fieldname === 'avatar3') {
+      cb(null, './upload/SAMPURNAVIDYA/castCertificate/');
+    } else if (file.fieldname === 'avatar4') {
+      cb(null, './upload/SAMPURNAVIDYA/collegeID/');
+    } else if (file.fieldname === 'avatar5') {
+      cb(null, './upload/SAMPURNAVIDYA/incomeCertificate/');
+    } else if (file.fieldname === 'avatar6') {
+      cb(null, './upload/SAMPURNAVIDYA/SSLC/');
+    } else if (file.fieldname === 'avatar7') {
+      cb(null, './upload/SAMPURNAVIDYA/PUC/');
+    } else if (file.fieldname === 'avatar8') {
+      cb(null, './upload/SAMPURNAVIDYA/lastSemUG/');
+    } else if (file.fieldname === 'avatar9') {
+      cb(null, './upload/SAMPURNAVIDYA/lastSemPG/');
+    } else if (file.fieldname === 'avatar10') {
+      cb(null, './upload/SAMPURNAVIDYA/userPhoto/');
     }
   },
   filename: function (req, file, cb) {
-    if (file.fieldname === 'adharCard') {
+    if (file.fieldname === 'avatar1') {
       cb(
         null,
         file.fieldname + '-' + Date.now() + path.extname(file.originalname)
       );
-    } else if (file.fieldname === 'photo') {
+    } else if (file.fieldname === 'avatar2') {
       cb(
         null,
         file.fieldname + '-' + Date.now() + path.extname(file.originalname)
       );
-    } else if (file.fieldname === 'puc') {
+    } else if (file.fieldname === 'avatar3') {
       cb(
         null,
         file.fieldname + '-' + Date.now() + path.extname(file.originalname)
       );
-    } else if (file.fieldname === 'UG') {
+    } else if (file.fieldname === 'avatar4') {
       cb(
         null,
         file.fieldname + '-' + Date.now() + path.extname(file.originalname)
       );
-    } else if (file.fieldname === 'PG') {
+    } else if (file.fieldname === 'avatar5') {
       cb(
         null,
         file.fieldname + '-' + Date.now() + path.extname(file.originalname)
       );
-    } else if (file.fieldname === 'collegeID') {
+    } else if (file.fieldname === 'avatar6') {
       cb(
         null,
         file.fieldname + '-' + Date.now() + path.extname(file.originalname)
       );
-    } else if (file.fieldname === 'bankDetails') {
+    } else if (file.fieldname === 'avatar7') {
       cb(
         null,
         file.fieldname + '-' + Date.now() + path.extname(file.originalname)
       );
-    } else if (file.fieldname === 'income') {
+    } else if (file.fieldname === 'avatar8') {
       cb(
         null,
         file.fieldname + '-' + Date.now() + path.extname(file.originalname)
       );
-    } else if (file.fieldname === 'casteCertificate') {
+    } else if (file.fieldname === 'avatar9') {
+      cb(
+        null,
+        file.fieldname + '-' + Date.now() + path.extname(file.originalname)
+      );
+    } else if (file.fieldname === 'avatar10') {
       cb(
         null,
         file.fieldname + '-' + Date.now() + path.extname(file.originalname)
@@ -81,7 +88,7 @@ const storage = multer.diskStorage({
 
 const fileFilter = (req, file, cb) => {
   // reject a file
-  if (file.fieldname === 'adharCard') {
+  if (file.fieldname === 'avatar1') {
     if (
       file.mimetype === 'image/jpeg' ||
       file.mimetype === 'image/jpg' ||
@@ -93,7 +100,7 @@ const fileFilter = (req, file, cb) => {
       req.fileValidationError = 'Only image files jpg,jpeg,png are allowed!';
       return cb(new Error('Only image files jpg,jpeg,png are allowed!'), false);
     }
-  } else if (file.fieldname === 'photo') {
+  } else if (file.fieldname === 'avatar2') {
     if (
       file.mimetype === 'image/jpeg' ||
       file.mimetype === 'image/jpg' ||
@@ -105,7 +112,7 @@ const fileFilter = (req, file, cb) => {
       req.fileValidationError = 'Only image files jpg,jpeg,png are allowed!';
       return cb(new Error('Only image files jpg,jpeg,png are allowed!'), false);
     }
-  } else if (file.fieldname === 'puc') {
+  } else if (file.fieldname === 'avatar3') {
     if (
       file.mimetype === 'image/jpeg' ||
       file.mimetype === 'image/jpg' ||
@@ -117,7 +124,7 @@ const fileFilter = (req, file, cb) => {
       req.fileValidationError = 'Only image files jpg,jpeg,png are allowed!';
       return cb(new Error('Only image files jpg,jpeg,png are allowed!'), false);
     }
-  } else if (file.fieldname === 'UG') {
+  } else if (file.fieldname === 'avatar4') {
     if (
       file.mimetype === 'image/jpeg' ||
       file.mimetype === 'image/jpg' ||
@@ -129,7 +136,7 @@ const fileFilter = (req, file, cb) => {
       req.fileValidationError = 'Only image files jpg,jpeg,png are allowed!';
       return cb(new Error('Only image files jpg,jpeg,png are allowed!'), false);
     }
-  } else if (file.fieldname === 'PG') {
+  } else if (file.fieldname === 'avatar5') {
     if (
       file.mimetype === 'image/jpeg' ||
       file.mimetype === 'image/jpg' ||
@@ -141,7 +148,7 @@ const fileFilter = (req, file, cb) => {
       req.fileValidationError = 'Only image files jpg,jpeg,png are allowed!';
       return cb(new Error('Only image files jpg,jpeg,png are allowed!'), false);
     }
-  } else if (file.fieldname === 'collegeID') {
+  } else if (file.fieldname === 'avatar6') {
     if (
       file.mimetype === 'image/jpeg' ||
       file.mimetype === 'image/jpg' ||
@@ -153,7 +160,7 @@ const fileFilter = (req, file, cb) => {
       req.fileValidationError = 'Only image files jpg,jpeg,png are allowed!';
       return cb(new Error('Only image files jpg,jpeg,png are allowed!'), false);
     }
-  } else if (file.fieldname === 'bankDetails') {
+  } else if (file.fieldname === 'avatar7') {
     if (
       file.mimetype === 'image/jpeg' ||
       file.mimetype === 'image/jpg' ||
@@ -165,7 +172,7 @@ const fileFilter = (req, file, cb) => {
       req.fileValidationError = 'Only image files jpg,jpeg,png are allowed!';
       return cb(new Error('Only image files jpg,jpeg,png are allowed!'), false);
     }
-  } else if (file.fieldname === 'income') {
+  } else if (file.fieldname === 'avatar8') {
     if (
       file.mimetype === 'image/jpeg' ||
       file.mimetype === 'image/jpg' ||
@@ -177,7 +184,19 @@ const fileFilter = (req, file, cb) => {
       req.fileValidationError = 'Only image files jpg,jpeg,png are allowed!';
       return cb(new Error('Only image files jpg,jpeg,png are allowed!'), false);
     }
-  } else if (file.fieldname === 'casteCertificate') {
+  } else if (file.fieldname === 'avatar9') {
+    if (
+      file.mimetype === 'image/jpeg' ||
+      file.mimetype === 'image/jpg' ||
+      file.mimetype === 'image/png'
+    ) {
+      cb(null, true);
+    } else {
+      !file.originalname.match(/\.(jpg|JPG|jpeg|JPEG|png|PNG|gif|GIF)$/);
+      req.fileValidationError = 'Only image files jpg,jpeg,png are allowed!';
+      return cb(new Error('Only image files jpg,jpeg,png are allowed!'), false);
+    }
+  } else if (file.fieldname === 'avatar10') {
     if (
       file.mimetype === 'image/jpeg' ||
       file.mimetype === 'image/jpg' ||
@@ -203,34 +222,30 @@ const upload = multer({
 router.post(
   '/',
   upload.fields([
-    { name: 'adharCard', maxCount: 1 },
-    { name: 'photo', maxCount: 1 },
-    { name: 'puc', maxCount: 1 },
-    { name: 'UG', maxCount: 1 },
-    { name: 'PG', maxCount: 1 },
-    { name: 'collegeID', maxCount: 1 },
-    { name: 'bankDetails', maxCount: 1 },
-    { name: 'income', maxCount: 1 },
-    { name: 'casteCertificate', maxCount: 1 },
+    { name: 'avatar1', maxCount: 1 },
+    { name: 'avatar2', maxCount: 1 },
+    { name: 'avatar3', maxCount: 1 },
+    { name: 'avatar4', maxCount: 1 },
+    { name: 'avatar5', maxCount: 1 },
+    { name: 'avatar6', maxCount: 1 },
+    { name: 'avatar7', maxCount: 1 },
+    { name: 'avatar8', maxCount: 1 },
+    { name: 'avatar9', maxCount: 1 },
+    { name: 'avatar10', maxCount: 1 },
   ]),
   [
     check('fullname', 'fullname is required').not().isEmpty(),
     check('email', 'email is required').isEmail(),
-    check('gender', 'Gender is required').not().isEmpty(),
-    check('caste', 'caste is required').not().isEmpty(),
-    check('phone', 'Phine number is required').not().isEmpty(),
     check('permanentaddress', 'permanentaddress is required').not().isEmpty(),
     check('district', 'district is required').not().isEmpty(),
     check('city', 'city is required').not().isEmpty(),
+    check('caste', 'caste is required').not().isEmpty(),
+    check('gender', 'gender is required').not().isEmpty(),
+    check('phone', 'phone is required').not().isEmpty(),
     check('zipcode', 'zipcode is required').not().isEmpty(),
-    check('course', 'course is required').not().isEmpty(),
     check('collegename', 'collegename is required').not().isEmpty(),
     check('university', 'university is required').not().isEmpty(),
     check('collegeaddress', 'collegeaddress is required').not().isEmpty(),
-    check('percentage', 'percentage is required').not().isEmpty(),
-    check('bookname', 'bookname is required').not().isEmpty(),
-    check('bookauthor', 'bookauthor is required').not().isEmpty(),
-    check('bookedition', 'bookedition is required').not().isEmpty(),
   ],
   async (req, res, next) => {
     console.log(req.file);
@@ -239,41 +254,32 @@ router.post(
       return res.status(400).json({ errors: errors.array() });
     }
 
-    const books = new Dhyanasagar({
+    const vidya = new SampurnaVidya({
       _id: new mongoose.Types.ObjectId(),
       fullname: req.body.fullname,
       email: req.body.email,
-      gender: req.body.gender,
-      caste: req.body.caste,
-      phone: req.body.phone,
-
       permanentaddress: req.body.permanentaddress,
       district: req.body.district,
       city: req.body.city,
+      caste: req.body.caste,
+      gender: req.body.gender,
+      phone: req.body.phone,
       zipcode: req.body.zipcode,
-      course: req.body.course,
       collegename: req.body.collegename,
-
       university: req.body.university,
       collegeaddress: req.body.collegeaddress,
-      percentage: req.body.percentage,
-      stream: req.body.stream,
-      bookname: req.body.bookname,
-
-      bookauthor: req.body.bookauthor,
-      bookedition: req.body.bookedition,
-
-      adharCard: req.files['adharCard'][0].path,
-      photo: req.files['photo'][0].path,
-      puc: req.files['puc'][0].path,
-      UG: req.files['UG'][0].path,
-      PG: req.files['PG'][0].path,
-      collegeID: req.files['collegeID'][0].path,
-      bankDetails: req.files['bankDetails'][0].path,
-      incomeCertificate: req.files['income'][0].path,
-      casteCertificate: req.files['casteCertificate'][0].path,
+      collegeID: req.files['avatar1'][0].path,
+      incomeCertificate: req.files['avatar2'][0].path,
+      casteCertificate: req.files['avatar3'][0].path,
+      adharCard: req.files['avatar4'][0].path,
+      bankDetails: req.files['avatar5'][0].path,
+      photo: req.files['avatar6'][0].path,
+      sslc: req.files['avatar7'][0].path,
+      puc: req.files['avatar8'][0].path,
+      UG: req.files['avatar9'][0].path,
+      PG: req.files['avatar10'][0].path,
     });
-    await books
+    await vidya
       .save()
       .then((result) => {
         console.log(result);
@@ -282,33 +288,26 @@ router.post(
           sampurnavidya: {
             fullname: result.fullname,
             email: result.email,
-            gender: result.gender,
-            caste: result.caste,
-            phone: result.phone,
-
             permanentaddress: result.permanentaddress,
             district: result.district,
             city: result.city,
+            caste: result.caste,
+            gender: result.gender,
+            phone: result.phone,
             zipcode: result.zipcode,
-            course: result.course,
-
             collegename: result.collegename,
             university: result.university,
             collegeaddress: result.collegeaddress,
-            percentage: result.percentage,
-            bookname: result.bookname,
-            bookauthor: result.bookauthor,
-            bookedition: result.bookedition,
-
-            adharCard: result.adharCard,
+            collgeid: result.collegeID,
+            income: result.incomeCertificate,
+            castecertificate: result.casteCertificate,
+            adharcard: result.adharCard,
+            bank: result.bankDetails,
             photo: result.photo,
+            sslc: result.sslc,
             puc: result.puc,
             UG: result.UG,
             PG: result.PG,
-            collegeID: result.collegeID,
-            bankDetails: result.bankDetails,
-            incomeCertificate: result.incomeCertificate,
-            casteCertificate: result.casteCertificate,
           },
         });
       })
